@@ -18,13 +18,7 @@ public class Prueba {
         // Escribir JSON de corruptos
         ObjectMapper mapeador = new ObjectMapper();
         mapeador.configure(SerializationFeature.INDENT_OUTPUT, true);
-        mapeador.writeValue(new File("./Corruptos.json"), generarCorrupto(listaCorruptos));
+        mapeador.writeValue(new File("./Corruptos.json"), listaCorruptos);
 
-    }
-
-    public static ArrayList<Corrupto> generarCorrupto(ArrayList<Corrupto> listaCorruptos) {
-        ArrayList<Corrupto> lista = new ArrayList<>();
-        lista.addAll(listaCorruptos);
-        return lista;
     }
 }

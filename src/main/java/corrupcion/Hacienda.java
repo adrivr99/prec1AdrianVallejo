@@ -40,6 +40,7 @@ public class Hacienda {
         }
     }
 
+    // Método para generar un txt pasando como parámetro una lista
     public static void generarTxt(ArrayList<Corrupto> corruptos) {
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter("corruptos.txt", true))) {
 
@@ -56,6 +57,7 @@ public class Hacienda {
         }
     }
 
+    // Método para crear un Directorio
     public static void crearDirectorio(String ruta) {
 
         Path directory = Paths.get(ruta+"/corruptos.txt");
