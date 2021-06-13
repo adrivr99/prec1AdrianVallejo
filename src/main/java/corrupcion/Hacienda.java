@@ -3,35 +3,36 @@ package main.java.corrupcion;
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Hacienda {
-    public static ArrayList<Corrupto> leerTxt() {
+    public static ArrayList<Corrupto> leerTxt(String setRuta) {
         ArrayList<Corrupto> lista = new ArrayList<>();
-        String ruta = "./corruptos2021.txt";
+        String ruta = setRuta;
         String linea;
         String[] tokens;
+        int [] numeros = new int[10];
         try (Scanner datosFichero = new Scanner(new FileReader(ruta))) {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
             while (datosFichero.hasNextLine()) {
                 linea = datosFichero.nextLine(); //Se lee la línea
                 tokens = linea.split(",");
-                Corrupto objetoCorrupto = new Corrupto();
+                Corrupto objetoCorrupto = new Corrupto(tokens[0],tokens[1],numeros);
                 objetoCorrupto.setApellidos(tokens[0]);
                 objetoCorrupto.setNombre(tokens[1]);
                 linea = datosFichero.nextLine();
                 tokens = linea.split(",");
-                objetoCorrupto.setMillones(tokens[Integer.parseInt(linea)].toCharArray());
-                /*array[0] = (char) Integer.parseInt(tokens[0]);
-                array[1] = (char) Integer.parseInt(tokens[1]);
-                array[2] = (char) Integer.parseInt(tokens[2]);
-                array[3] = (char) Integer.parseInt(tokens[3]);
-                array[4] = (char) Integer.parseInt(tokens[4]);
-                array[5] = (char) Integer.parseInt(tokens[5]);
-                array[6] = (char) Integer.parseInt(tokens[6]);
-                array[7] = (char) Integer.parseInt(tokens[7]);
-                array[8] = (char) Integer.parseInt(tokens[8]);
-                array[9] = (char) Integer.parseInt(tokens[9]);*/
+                for (int i = 0; i < 9; i++) {
+                    try{
+                        numeros[i] = Integer.parseInt(linea);
+                    }catch (NumberFormatException nfe){
+                        Arrays.toString(numeros);
+                    }
+                }
+                for (int i = 0; i < 1; i++) {
+                    numeros[i] = Integer.parseInt(tokens[2]);
+                }
                 lista.add(objetoCorrupto);
             }
             return lista;
@@ -55,23 +56,6 @@ public class Hacienda {
             System.out.println("No se ha podido introducir");
 
         }
-    }
-
-    // Método para crear un Directorio
-    public static void crearDirectorio(String ruta) {
-
-        Path directory = Paths.get(ruta+"/corruptos.txt");
-        try {
-            Files.createDirectory(directory);
-        } catch (FileAlreadyExistsException faee) {
-            System.out.println("No se puede crear " + ruta + " porque ya existe");
-        } catch (AccessDeniedException ade) {
-            System.out.println("No tiene permisos para crear " + ruta);
-        } catch (IOException e) {
-            System.out.println("Problema creando el directorio " + ruta);
-            System.out.println("Seguramente la ruta está mal escrita o no existe");
-        }
-
     }
 
 }

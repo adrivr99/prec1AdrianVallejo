@@ -6,15 +6,18 @@ import java.util.Comparator;
 public class Corrupto implements Comparable <Corrupto> {
     private String nombre;
     private String apellidos;
-    private char [] millones = new char[10];
+    private int [] millones;
+    public static int contador;
 
     public Corrupto() {
+        contador++;
     }
 
-    public Corrupto(String nombre, String apellidos, char [] millones) {
+    public Corrupto(String nombre, String apellidos, int[] millones) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.millones = millones;
+        contador++;
     }
 
     public String getNombre() {
@@ -33,21 +36,12 @@ public class Corrupto implements Comparable <Corrupto> {
         this.apellidos = apellidos;
     }
 
-    public char[] getMillones() {
+    public int[] getMillones() {
         return millones;
     }
 
-    public void setMillones(char[] millones) {
+    public void setMillones(int[] millones) {
         this.millones = millones;
-    }
-
-    // Método para calcular la suma de los millones
-    public int sumarArray(char [] array){
-        int suma = 0;
-        for (int i = 0; i < array.length; i++) {
-            suma += array[i];
-        }
-        return suma;
     }
 
     @Override
@@ -59,14 +53,29 @@ public class Corrupto implements Comparable <Corrupto> {
                 '}';
     }
 
+    // Método para calcular la suma de los millones
+    public static int sumarArray(int [] array){
+        int suma = 0;
+        for (int i = 0; i < array.length; i++) {
+            suma += array[i];
+        }
+        return suma;
+    }
+
     // Metodo para comparar objetos Corrupto de la lista
     @Override
     public int compareTo(Corrupto corructoN1) {
-        if (this.apellidos == corructoN1.apellidos) {
+        if (this.apellidos.equalsIgnoreCase(corructoN1.apellidos)) {
             return this.nombre.compareTo(corructoN1.nombre);
         } else{
             return this.apellidos.compareTo(corructoN1.apellidos);
         }
 
     }
+    /*public int compareTo(Corrupto corruptoN1) {
+        Comparator.comparing((Corrupto c)-> corruptoN1.getApellidos())
+                .thenComparing((Corrupto c) -> corruptoN1.getNombre())
+                .thenComparing((Corrupto c) -> corruptoN1.getMillones().toString());
+
+    }*/
 }

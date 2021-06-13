@@ -1,1 +1,21 @@
-[ ]
+[ {
+  "nombre" : " LUIS",
+  "apellidos" : "CARDENAS",
+  "millones" : [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+}, {
+  "nombre" : " IÑAKI",
+  "apellidos" : "FRUTANGARIN",
+  "millones" : [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+}, {
+  "nombre" : " RODRIGO",
+  "apellidos" : "RATATUILLE",
+  "millones" : [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+}, {
+  "nombre" : " WILLY",
+  "apellidos" : "TOLERDO",
+  "millones" : [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+}, {
+  "nombre" : " PACO",
+  "apellidos" : "TORO",
+  "millones" : [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+} ]
