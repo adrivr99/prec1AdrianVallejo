@@ -28,18 +28,18 @@ public class Prueba {
         System.out.println("MAP");
         Map<String, Integer> corruptosMap = new HashMap<>();
         for (Corrupto corrupto : listaCorruptos){
-            try{
-                corruptosMap.put(corrupto.getNombre(), Integer.parseInt(Arrays.toString(corrupto.getMillones())));
-            }catch (NumberFormatException nfe){
-                System.out.println(corrupto.toString());
-            }
+            corruptosMap.put(corrupto.getNombre(), sumarArray(corrupto.getMillones()));
         }
 
         System.out.println(corruptosMap);
 
+        corruptosMap.containsKey("WILLY");
+
         generarTxt(listaCorruptos);
 
-        buscarCorrupto(corruptosMap);
+
+
+        System.out.println(buscarCorrupto(corruptosMap));
 
 
 
@@ -53,21 +53,17 @@ public class Prueba {
     private static int buscarCorrupto(Map<String, Integer> corruptosMap) {
         Scanner teclado = new Scanner(System.in);
         boolean corruptoTrue = false;
+        String corrupto;
         do{
             System.out.println("Introduce el nombre de un corrupto:");
-            String corrupto = teclado.next();
-            for (int i = 0; i < corruptosMap.size(); i++) {
-                if (corruptosMap.containsKey(corrupto)) {
-                    System.out.println(corruptosMap.get(i).toString());
-                    corruptoTrue = true;
-                } else {
-                    System.out.println("Corrupto no reconocido");
-                    corruptoTrue = false;
-                }
+            corrupto = teclado.next();
+            if(corruptosMap.containsKey(corrupto)){
+                System.out.println(corrupto);
+                corruptoTrue = true;
             }
 
         }while(!corruptoTrue);
 
-        return 0;
+        return corruptosMap.get(corrupto);
     }
 }

@@ -12,20 +12,21 @@ public class Hacienda {
         String ruta = setRuta;
         String linea;
         String[] tokens;
-        int [] numeros = new int[10];
+
         try (Scanner datosFichero = new Scanner(new FileReader(ruta))) {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
             while (datosFichero.hasNextLine()) {
                 linea = datosFichero.nextLine(); //Se lee la línea
                 tokens = linea.split(",");
+                int [] numeros = new int[10];
                 Corrupto objetoCorrupto = new Corrupto(tokens[0],tokens[1],numeros);
-                objetoCorrupto.setApellidos(tokens[0]);
-                objetoCorrupto.setNombre(tokens[1]);
+                objetoCorrupto.setApellidos(tokens[0].trim());
+                objetoCorrupto.setNombre(tokens[1].trim());
                 linea = datosFichero.nextLine();
                 tokens = linea.split(",");
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < numeros.length; i++) {
                     try{
-                        numeros[i] = Integer.parseInt(linea);
+                        numeros[i] = Integer.parseInt(tokens[i]);
                     }catch (NumberFormatException nfe){
                         Arrays.toString(numeros);
                     }
